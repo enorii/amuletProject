@@ -6,20 +6,20 @@ key_jump = keyboard_check_pressed(ord("W"));
 move = key_left + key_right;
 hsp = move * movespeed;
 if (vsp < 10) vsp += grav;
-if (place_meeting(x, y+1, object0)){
+if (place_meeting(x, y + 1, objWall)){
 	vsp = key_jump * -jumpspeed	
 }
 
 //collision
-if (place_meeting(x + hsp, y, object0)){
-	while(!place_meeting(x + sign(hsp), y, object0)){
+if (place_meeting(x + hsp, y, objWall)){
+	while(!place_meeting(x + sign(hsp), y, objWall)){
 		x += sign(hsp);
 	}
 	hsp = 0;
 }
 
-if (place_meeting(x, vsp + y, object0)){
-	while(!place_meeting(x, y + sign(vsp), object0)){
+if (place_meeting(x, vsp + y, objWall)){
+	while(!place_meeting(x, y + sign(vsp), objWall)){
 		y += sign(vsp);
 	}
 	vsp = 0;
@@ -27,4 +27,5 @@ if (place_meeting(x, vsp + y, object0)){
 
 x += hsp;
 y += vsp;
+
 
